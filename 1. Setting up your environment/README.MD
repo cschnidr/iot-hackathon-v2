@@ -42,3 +42,17 @@ ls /dev/tty* | grep serial
 
 2. Use the device manager to find your ESP8266 board in Windows:
 <img src="https://github.com/cvolkmer/iot-hackathon/blob/master/images/1_3_install_driver_win.png" width="50%">
+
+# Install MongooseOS command line tools
+
+Check this page for details on how to install MongooseOS on your computer: https://mongoose-os.com/docs/quickstart/setup.md#1-download-and-install-mos-tool
+
+Windows: Create C:\mos folder. Right-click this https://mongoose-os.com/downloads/mos-release/win/mos.exe, choose "Save link as", save mos.exe into the C:\mos folder. Double-click on mos.exe to start a Web UI. If it does not start, open command prompt, enter cd c:\mos and then mos --start-webview=false
+
+Macs: First, install brew utility from here: https://brew.sh/
+Then execute the following in CLI:
+```
+brew tap cesanta/mos
+brew install mos
+mos
+```
