@@ -1,4 +1,4 @@
-# IOT Hackathon - Wemos to AWS IoT, Lamda and S3
+# IOT Hackathon - Wemos with MongooseOS to AWS IoT, Lambda and S3
 
 Resources and Sources for an IoT Hackathon with an Arduino Based ESP8266 WeMos D1 mini board, Temperature sensor (DHT11), AWS IoT Core, Lambda and S3.
 Basic idea is from: https://itywik.org/2018/04/17/build-a-5-iot-thing-with-esp8266-mongoose-os-and-aws-iot-core/
