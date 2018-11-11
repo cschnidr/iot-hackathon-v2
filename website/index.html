@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Temperature and Humidity coming from an ESP8266</title>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        body {
+            width: 1200px;
+            font-family: sans-serif;
+            margin: auto;
+            color: #555;
+        }
+    </style>
+</head>
+ 
+<body>
+    <h1>NTAP Hackathon - Temperature and Humidity coming from an ESP8266</h1>
+    <h2 id="latest-measurements"></h2>
+ 
+    <canvas id="myChart"></canvas>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+ 
+            // The data for our dataset
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Temperature",
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                }, {
+                    label: "Humidity",
+                    borderColor: 'rgb(54, 162, 235)',
+                    data: [],
+                }]
+            },
+ 
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        // insert the link to your JSON file in your S3 bucket below
+ 
+        $.getJSON("bucket/jsonfile", function(data) {
+            chart.data.datasets[0].data = data.temperature_readings;
+            chart.data.datasets[1].data = data.humidity_readings;
+            chart.data.labels = data.timestamps;
+            chart.update();
+ 
+            l_temp = data.temperature_readings;
+            l_temp = l_temp[l_temp.length - 1];
+            l_humid = data.humidity_readings;
+            l_humid = l_humid[l_humid.length - 1];
+ 
+            $('#latest-measurements').html('Latest readings: Temperature:' + l_temp + '&deg;C / Humidity:' + l_humid + '%');
+        });
+    </script>
+</body>
+ 
+</html>
