@@ -15,13 +15,13 @@ Start the MOS tool by double clicking or CLI command. Browser starts up like bel
 2. Choose ESP8266 with 4MB RAM
 3. Choose the demo-c App
 
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mongooseos-1.jpg "Connecting to the board")
+![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mongooseos-1.png "Connecting to the board")
 
 and click Flash do flash your Wemos with Mongoose OS and the demo-c app.
 
 You see in the log section of the tool, that the application is downloaded from the web and flashed to your Wemos.
 
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mongooseos-2.jpg "Log while flashing")
+![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mongooseos-2.png "Log while flashing")
 
 The demo app is a blinking LED on the Wemos.
 
