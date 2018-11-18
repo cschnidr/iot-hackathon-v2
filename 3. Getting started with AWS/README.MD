@@ -7,4 +7,7 @@
 # Setup AWS-CLI on your Computer
 
 
-# Setup MongooseOS to connect to AWS IoT Core
+# Create the Lambda Function in AWS
+
+
+# Put up the Webpage in S3
