@@ -5,18 +5,18 @@ In order to do so, we create a user in AWS with the required access policy.
 
 1. Connect to https://aws.amazon.com and login
 2. Choose Ireland for the region to work
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-1.png "Choosing the AWS region")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-1.png" width="70%">
 3. Go to IAM service
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-2.png "IAM user interface")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-2.png" width="70%">
 4. Create a new user
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-3.png "Creating a new user")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-3.png" width="70%">
 5. Choose a name and programmatic access only (API)
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-4.png "IAM user interface")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-4.png" width="70%">
 6. Attach IOT and S3 Policies as depicted
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-5.png "Attaching IoT policy")
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-6.png "Attaching S3 policy")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-5.png" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-6.png" width="70%">
 7. Download/copy the access key id and secret access key for your user (beware: this can be done once and only here)
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-7.png "IAM user interface")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-7.png" width="70%">
 
 
 # Setup AWS-CLI on your Computer
@@ -64,11 +64,10 @@ aws s3 cp index.html s3://yourbucketname/ --acl public-read
 
 Go to the AWS interface (aws.amazon.com) into the S3 section
 Choose the bucket you created to see the index.html in it.
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-1.png "IAM user interface")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-1.png" width="70%">
 
 Click on the index.html to see the public URL to it
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-2.png "IAM user interface")
-
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-2.png" width="70%">
 
 
 
