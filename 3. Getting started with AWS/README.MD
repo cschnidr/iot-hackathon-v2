@@ -5,7 +5,8 @@ In order to do so, we create a user in AWS with the required access policy.
 
 1. Connect to https://aws.amazon.com and login
 2. Choose Ireland for the region to work
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-1.png" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-1.png" width="4.
+0%">
 3. Go to IAM service
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-iamuser-2.png" width="70%">
 4. Create a new user
