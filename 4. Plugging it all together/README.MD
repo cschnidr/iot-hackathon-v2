@@ -2,11 +2,11 @@
 
 1. Create a new app in MOS tool
 
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png "Creating a new app")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png" width="70%">
 
 2. Choose a name for your app
 
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-2.png "Choosing a name")
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-2.png" width="70%">
 
 3. Choose mos.yml and replace it with the provided one: 
 
