@@ -6,7 +6,7 @@ VCC = Power supply --> connect to 3V3 (3.3V) on your Wemos (next to pin D8)
 DATA = Serial data output --> connect to pin D2 on your Wemos
 GND/G = Ground --> connect to GND on your Wemos (next to pin D4)
 
-![Connecting DHT11 to Wemos](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-hwsetup-1.jpg){:height="50%" width="50%"}
+![Connecting DHT11 to Wemos](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-hwsetup-1.jpg){height="50%" width="50%"}
 
 
 # Start MOS Tool/IDE and connect your Board
