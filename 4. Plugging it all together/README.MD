@@ -35,11 +35,22 @@ Change to the MOS tool in order to get your Wemos connected to a wireless networ
 Go to MOS tool and click on "Device Config". On the Window titled "Provision device on AWS IoT" choose the region an policy as depicted below and hit "Provision with AWS IoT".
 The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="90%">
 
 
 # Testing Wemos connection to AWS IoT
 
+In order to test if your device is sending data to AWS you can check the logs in the MOS tool:
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-checkinglog-1.png" width="90%">
+
+To see if AWS is getting your data, you connect to aws.amazon.com and go to the "iot core" section:
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-testiot-1.png" width="90%">
+
+Next you need to subscribe (click on test) to the MQTT channel (we use # in this example, which gives you all data your broker is receiving):
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-testiot-2.png" width="90%">
+
+After a while (Wemos is reporting the temperature every 5min) you should see the following:
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-testiot-3.png" width="90%">
 
 
 # Create the Lambda Function in AWS
