@@ -6,7 +6,7 @@ VCC = Power supply --> connect to 3V3 (3.3V) on your Wemos (next to pin D8)
 DATA = Serial data output --> connect to pin D2 on your Wemos
 GND/G = Ground --> connect to GND on your Wemos (next to pin D4)
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-hwsetup-1.jpg" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-hwsetup-1.jpg" width="50%">
 
 
 # Start MOS Tool/IDE and connect your Board
@@ -15,7 +15,7 @@ Start the MOS tool by double clicking or CLI command. Browser starts up like bel
 2. Choose ESP8266 with 4MB RAM
 3. Choose the demo-c App
 
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mongooseos-1.png "Connecting to the board"){:height="50%" width="50%"}
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mongooseos-1.png" width="50%">
 
 and click Flash do flash your Wemos with Mongoose OS and the demo-c app.
 
