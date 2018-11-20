@@ -55,6 +55,39 @@ After a while (Wemos is reporting the temperature every 5min) you should see the
 
 # Create the Lambda Function in AWS
 
+Your Wemos is delivering data to AWS. The IoT service is obviously receiving that data. We now will put a rule in place, that this data will be sent to a Lambda function, which will format the data and store it in a single object/file in S3.
+Lambda is a so-called serverless computing service running in AWS. You can run code to do something (like transforming and storing data) without worring about the required servers, operating systems and middlewares. AWS is managing it completely in the background. While you can run 1M requests in Lambda for free, the usage of it is charged only when running code (in 100ms increments and memory usage).
+More on Lambda: https://aws.amazon.com/lambda/.
+
+1. Go to your AWS Console
+2. Go to the IoT Core Service
+
+```
+SELECT * FROM 'event/temp_humidity'
+``
+
+https://github.com/cschnidr/iot-hackathon-v2/blob/master/aws%20/store_temp_in_s3.py
 
 
 
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:*"
+        }
+    ]
+}
+```
