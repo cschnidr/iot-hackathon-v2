@@ -41,13 +41,36 @@ Default region name [None]: eu-west-1
 Default output format [None]: json
 ```
 
-# Create a new S3 Bucket
+# Create a new S3 Bucket and put up the Webpage
+
+1. Create a new S3 bucket by using CLI
+```
+aws s3 mb s3://yourbucketname
+aws s3 ls
+````
+
+2. Download the [index.html](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/webpage/index.html) to your machine. By web browser or CLI e.g. curl or wget.
+```
+curl -O https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html
+````
+
+3. Adjust the index.html to use data from your bucket --> you maybe need to come back here later, when you know how the file with the iot-data (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_XXXXXX) is named.
+
+4. Copy the index.html to your bucket and make it publicly accessible
+```
+aws s3 cp index.html s3://yourbucketname/ --acl public-read
+````
+5. Find the public URL of your index.html and access it with a browser
+
+Go to the AWS interface (aws.amazon.com) into the S3 section
+Choose the bucket you created to see the index.html in it.
+![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-1.png "IAM user interface")
+
+Click on the index.html to see the public URL to it
+![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-2.png "IAM user interface")
 
 
-# Put up the Webpage in S3
 
-
-# Create the Lambda Function in AWS
 
 
 

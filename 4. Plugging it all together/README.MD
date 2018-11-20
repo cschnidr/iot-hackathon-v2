@@ -25,5 +25,8 @@
 # Setup MongooseOS to connect to AWS IoT Core
 
 
+# Create the Lambda Function in AWS
+
+
 
 
