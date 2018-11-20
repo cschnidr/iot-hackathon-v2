@@ -20,9 +20,26 @@
 
 
 # Connect your Wemos to Wireless
+Change to the MOS tool in order to get your Wemos connected to a wireless network.
+
+1. Click on "device setup" if your config windows below is not appearing
+
+2. Connect to the serial port (restart MOS if the flashed app is recognized/appearing)
+
+3. Configure your wireless --> device status should change to online
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-wifi-1.png" width="70%">
 
 
 # Setup MongooseOS to connect to AWS IoT Core
+
+Go to MOS tool and click on "Device Config". On the Window titled "Provision device on AWS IoT" choose the region an policy as depicted below and hit "Provision with AWS IoT".
+The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
+
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="70%">
+
+
+# Testing Wemos connection to AWS IoT
+
 
 
 # Create the Lambda Function in AWS
