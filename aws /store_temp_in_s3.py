@@ -3,7 +3,7 @@ import boto3
  
 BUCKET_BASE     = 'insert-your-bucket-name-here'
 TEMP_FILE       = '/tmp/temperatures.json'
-MAX_READINGS    = int((60/5)*24) # one reading every 5 mins for 24 hours
+MAX_READINGS    = int((60/5)*24) # one reading every 5 mins for 24 hours - higher this value to get longer graphs e.g. replace 24 with 168 to get a week
 MAX_READINGS    = MAX_READINGS - 1 # make it easy for calculations
  
 def get_existing_values(device):

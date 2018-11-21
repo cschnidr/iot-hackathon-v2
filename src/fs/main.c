@@ -41,17 +41,21 @@ static void report_temperature(void *arg) {
    
   time_t now=time(0);
   struct tm *timeinfo = localtime(&now);
+  char *timestring = asctime(timeinfo); // preparing time/date string for json below
+  timestring[strlen(timestring) -1 ] = '\0'; // overwrite /n with zero in order to produce a valid json below
  
-  snprintf(topic, sizeof(topic), "event/temp_humidity");
-  json_printf(&out, "{total_ram: %lu, free_ram: %lu, temperature: %f, humidity: %f, device: \"%s\", timestamp: \"%02d:%02d:%02d\"}",
+snprintf(topic, sizeof(topic), "event/temp_humidity");
+  //json_printf(&out, "{total_ram: %lu, free_ram: %lu, temperature: %f, humidity: %f, device: \"%s\", timestamp: \"%02d:%02d:%02d\"}",
+  json_printf(&out, "{total_ram: %lu, free_ram: %lu, temperature: %f, humidity: %f, device: \"%s\", timestamp: \"%s\"}",
               (unsigned long) mgos_get_heap_size(),
               (unsigned long) mgos_get_free_heap_size(),
               (float) mgos_dht_get_temp(s_dht), 
               (float) mgos_dht_get_humidity(s_dht),
               (char *) mgos_sys_config_get_device_id(),
-              (int) timeinfo->tm_hour,
-              (int) timeinfo->tm_min,
-              (int) timeinfo->tm_sec);
+              (char *) timestring);
+  //            (int) timeinfo->tm_hour,
+  //            (int) timeinfo->tm_min,
+  //            (int) timeinfo->tm_sec);
   bool res = mgos_mqtt_pub(topic, message, strlen(message), 1, false);
   LOG(LL_INFO, ("Published to MQTT: %s", res ? "yes" : "no"));
   
@@ -86,7 +90,7 @@ enum mgos_app_init_result mgos_app_init(void) {
                                MGOS_GPIO_PULL_UP, MGOS_GPIO_INT_EDGE_NEG, 200,
                                button_cb, NULL);
                                 
-  if ((s_dht = mgos_dht_create(4, DHT11)) == NULL) {
+  if ((s_dht = mgos_dht_create(4, DHT11)) == NULL) { // using Pin4 on ESP8266
     LOG(LL_INFO, ("Unable to initialize DHT11"));
   }
  
