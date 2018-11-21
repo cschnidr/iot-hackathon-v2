@@ -17,6 +17,8 @@ filesystem:
 
 config_schema:
   - ["mqtt.server", "iot.eclipse.org:1883"]
+  - ["sys.tz_spec", "s", "CET-1CEST,M3.5.0,M10.5.0/3", {title: "See formats for the TZ env var: \"man tzset\". Formats like \":/path/to/file\" are not supported"}]
+
 
 libs:
   - origin: https://github.com/mongoose-os-libs/boards
