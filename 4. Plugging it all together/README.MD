@@ -8,11 +8,11 @@
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-2.png" width="70%">
 
-3. Choose mos.yml and replace it with the provided one: 
+3. Choose [mos.yml](https://github.com/cschnidr/iot-hackathon-v2/blob/master/src/mos.yml) in the dropdown and replace it with the provided one: 
 
 ![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-3.png "Modify mos.yml")
 
-4. Do the same with the main.c (Main program code)
+4. Do the same with the [main.c](https://github.com/cschnidr/iot-hackathon-v2/blob/master/src/fs/main.c) (Main program code)
 
 ![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-4.png "Modify main.c")
 
@@ -60,15 +60,25 @@ Lambda is a so-called serverless computing service running in AWS. You can run c
 More on Lambda: https://aws.amazon.com/lambda/.
 
 1. Go to your AWS Console
-2. Go to the IoT Core Service
-
+2. Go to the IoT Core Service, click on "act" and then on "create rule"
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-1.png" width="60%">
+3. Choose a name, a description and put the following SQL statement in it (it will filter all data delivered over MQTT)
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-2.png" width="60%">
 ```
 SELECT * FROM 'event/temp_humidity'
-``
+```
+4. Add "invoke a lambda function" as the action (under set one or more actions)
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-3.png" width="60%">
+5. Click on "create a new lambda function" --> Lambda dashboard will be opened in a new tab
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-4.png" width="60%">
 
-https://github.com/cschnidr/iot-hackathon-v2/blob/master/aws%20/store_temp_in_s3.py
+6. Choose a name for your lambda function and choose "Python 3.6" as the runtime. Then choose create a custom role (to set permissions what your new lambda function can do) --> a new IAM tab opens.
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-1.png" width="60%">
 
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-3.png" width="60%">
 
+7. Choose a name for the new role, edit the policy document with the json below:
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-role-1.png" width="60%">
 
 ```
 {
@@ -91,3 +101,40 @@ https://github.com/cschnidr/iot-hackathon-v2/blob/master/aws%20/store_temp_in_s3
     ]
 }
 ```
+
+8. Click allow to create the new role and go back to the lambda dialog. Hit "create new function".
+
+9. Paste the [Python code](https://github.com/cschnidr/iot-hackathon-v2/blob/master/aws%20/store_temp_in_s3.py) in the relevant window and choose File-Save in the code editor to complete your lambda function.
+You have to adjust the code in order it writes in your S3 bucket that you created earlier.
+
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-2.png" width="60%">
+
+10. Go back to the IoT Core dialog and choose your just created lambda function
+
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-5.png" width="60%">
+
+11. After some minutes (next time your Wemos is transmitting data to AWS), the lambda function gets triggered the first time and should create a new file in the relevant S3 bucket. Go to the S3 dashboard to check for the file:
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-1.png" width="60%">
+
+12. Click on that file to see the URL (copy that URL for later use) to access it.
+
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-2.png" width="60%">
+
+13. Click on that file again and choose action-make public in order to make it publicly accessible
+
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-3.png" width="60%">
+
+14. Lastly you need to modify your [index.html](https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html), in order that the included javascript will access the the right data to visualize.
+```
+...
+// insert the link to your JSON file in your S3 bucket below
+ 
+        $.getJSON("https://s3-eu-west-1.amazonaws.com/wemos-s3/esp8266_EXAMPLE", function(data) {
+...
+```
+
+15. Upload your index.html into your bucket and access it by a webbrowser
+```
+$ aws s3 cp index.html s3://wemos-s3/ --acl public-read
+```
+
