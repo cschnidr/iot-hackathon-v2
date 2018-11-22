@@ -57,3 +57,6 @@ brew tap cesanta/mos
 brew install mos
 mos
 ```
+
+#go back to Start page
+https://github.com/cschnidr/iot-hackathon-v2
