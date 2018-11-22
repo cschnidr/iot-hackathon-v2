@@ -9,7 +9,8 @@ MOS CLI> mos clone https://github.com/cschnidr/esp8266-dht-aws
 ```
 --> jump directly to step 5. if you used the CLI
 
-Step in the GUI:
+**Step in the GUI:**
+
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png" width="70%">
 
 
