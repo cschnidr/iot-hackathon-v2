@@ -1,8 +1,18 @@
 # Create a new project in MOS Tool and modify/compile the new app
+Beware the process for the Mac and Windows version of the MOS tool is intermixed below. The steps are the same but on the Mac version lots of it can be done in the GUI vs. CLI commands on the Windows version. However, you can also do CLI on your Mac. For Windows version go with the CLI commands.
 
 1. Create a new app in MOS tool
 
+MOS CLI --> make sure your are in the mos directory and not in another project dir. Use cd .. if necessary.
+```
+MOS CLI> mos clone https://github.com/cschnidr/esp8266-dht-aws
+```
+--> jump directly to step 5. if you used the CLI
+
+Step in the GUI:
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png" width="70%">
+
+
 
 2. Choose a name for your app
 
@@ -18,10 +28,20 @@
 
 5. Compile and flash the new program (hit first wrench icon to build the firmware and then the flash button to flash it to the Wemos)
 
+For CLI: Change into your project directory first
+```
+MOS CLI> cd esp8266-dht-aws
+```
+Build and Flash the app to your Wemos:
+```
+MOS CLI> mos build
+MOS CLI> mos flash
+```
 
 # Connect your Wemos to Wireless
 Change to the MOS tool in order to get your Wemos connected to a wireless network.
 
+**Steps in the Mac GUI**
 1. Click on "device setup" if your config windows below is not appearing
 
 2. Connect to the serial port (restart MOS if the flashed app is recognized/appearing)
@@ -29,13 +49,26 @@ Change to the MOS tool in order to get your Wemos connected to a wireless networ
 3. Configure your wireless --> device status should change to online
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-wifi-1.png" width="70%">
 
+**Steps in CLI**
+```
+MOS CLI> mos wifi <SSID> <password>
+```
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="70%">
+
 
 # Setup MongooseOS to connect to AWS IoT Core
 
+**Steps in the Mac GUI**
 Go to MOS tool and click on "Device Config". On the Window titled "Provision device on AWS IoT" choose the region an policy as depicted below and hit "Provision with AWS IoT".
 The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="90%">
+
+**Steps in CLI**
+```
+MOS CLI> mos aws-iot-setup --aws-region eu-west-1 --aws-iot-policy mos-default
+```
+The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
 
 
 # Testing Wemos connection to AWS IoT

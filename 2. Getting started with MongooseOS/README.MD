@@ -32,7 +32,9 @@ Start the MOS tool by double clicking or CLI command. Browser starts up like bel
 1. Choose the serial port, where Wemos it connected to. See first chapter if you don't know the serial port.
 2. Choose ESP8266
 
-From this point on you will use the CLI commands of the MOS tool!
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-mos-windows-1.PNG" width="80%">
+
+From this point on you will use the CLI commands (in command input above) of the MOS tool!
 
 3. Download the sources of the demo-c app
 ```
@@ -49,3 +51,5 @@ cd demo-c
 mos build
 mos flash
 ```
+
+Your Wemos/ESP8266 is now running the sample app, which does blink the LED every second. Check out also the device log window.

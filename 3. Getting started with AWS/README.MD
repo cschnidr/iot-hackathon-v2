@@ -54,7 +54,7 @@ aws s3 ls
 curl -O https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html
 ````
 
-3. Adjust the index.html to use data from your bucket --> you maybe need to come back here later, when you know how the file with the iot-data (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_XXXXXX) is named.
+3. Adjust the index.html to use data from your bucket --> you need to come back here later, when you know how the file with the iot-data (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_XXXXXX) is named.
 
 4. Copy the index.html to your bucket and make it publicly accessible
 ```
