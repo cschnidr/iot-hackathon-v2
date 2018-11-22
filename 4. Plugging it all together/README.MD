@@ -38,6 +38,7 @@ Build and Flash the app to your Wemos:
 MOS CLI> mos build
 MOS CLI> mos flash
 ```
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="70%">
 
 # Connect your Wemos to Wireless
 Change to the MOS tool in order to get your Wemos connected to a wireless network.
@@ -54,7 +55,7 @@ Change to the MOS tool in order to get your Wemos connected to a wireless networ
 ```
 MOS CLI> mos wifi <SSID> <password>
 ```
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-2.PNG" width="70%">
 
 
 # Setup MongooseOS to connect to AWS IoT Core
