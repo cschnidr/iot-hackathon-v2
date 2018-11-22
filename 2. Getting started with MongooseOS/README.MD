@@ -53,3 +53,7 @@ mos flash
 ```
 
 Your Wemos/ESP8266 is now running the sample app, which does blink the LED every second. Check out also the device log window.
+
+
+# back to HOME
+https://github.com/cschnidr/iot-hackathon-v2
