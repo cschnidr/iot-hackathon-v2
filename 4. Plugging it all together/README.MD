@@ -27,7 +27,7 @@ MOS CLI> mos clone https://github.com/cschnidr/esp8266-dht-aws
 
 ![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-4.png "Modify main.c")
 
-5. Compile and flash the new program (hit first wrench icon to build the firmware and then the flash button to flash it to the Wemos)
+5. Compile and flash the new program (hit first wrench icon to build the firmware and then the flash button to flash it to the Wemos - see the picture above)
 
 For CLI: Change into your project directory first
 ```
@@ -38,12 +38,13 @@ Build and Flash the app to your Wemos:
 MOS CLI> mos build
 MOS CLI> mos flash
 ```
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="90%">
 
 # Connect your Wemos to Wireless
 Change to the MOS tool in order to get your Wemos connected to a wireless network.
 
 **Steps in the Mac GUI**
+
 1. Click on "device setup" if your config windows below is not appearing
 
 2. Connect to the serial port (restart MOS if the flashed app is recognized/appearing)
@@ -52,21 +53,24 @@ Change to the MOS tool in order to get your Wemos connected to a wireless networ
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-wifi-1.png" width="70%">
 
 **Steps in CLI**
+
 ```
 MOS CLI> mos wifi <SSID> <password>
 ```
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-2.PNG" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-2.PNG" width="90%">
 
 
 # Setup MongooseOS to connect to AWS IoT Core
 
 **Steps in the Mac GUI**
+
 Go to MOS tool and click on "Device Config". On the Window titled "Provision device on AWS IoT" choose the region an policy as depicted below and hit "Provision with AWS IoT".
 The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="90%">
 
 **Steps in CLI**
+
 ```
 MOS CLI> mos aws-iot-setup --aws-region eu-west-1 --aws-iot-policy mos-default
 ```
