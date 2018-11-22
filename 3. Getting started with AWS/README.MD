@@ -70,7 +70,6 @@ Click on the index.html to see the public URL to it
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-2.png" width="70%">
 
 
-
-
-
+# back to HOME
+https://github.com/cschnidr/iot-hackathon-v2
 
