@@ -49,7 +49,7 @@ aws s3 mb s3://yourbucketname
 aws s3 ls
 ````
 
-2. Download the [index.html](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/webpage/index.html) to your machine. By web browser or CLI e.g. curl or wget.
+2. Download the [index.html](https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html) to your machine. By web browser or CLI e.g. curl or wget.
 ```
 curl -O https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html
 ````

@@ -41,8 +41,14 @@ static void report_temperature(void *arg) {
    
   time_t now=time(0);
   struct tm *timeinfo = localtime(&now);
-  char *timestring = asctime(timeinfo); // preparing time/date string for json below
-  timestring[strlen(timestring) -1 ] = '\0'; // overwrite /n with zero in order to produce a valid json below
+
+  char timestring[30];
+  strftime(timestring, 30, "%d.%m.%Y %H:%M", timeinfo);
+  
+  //Date format example: 2011 03-18 11-25-04 Fri = "%Y %m-%d %H-%M-%S %a"
+  
+  //char *timestring = asctime(timeinfo); // preparing time/date string for json below
+  //timestring[strlen(timestring) -1 ] = '\0'; // overwrite /n with zero in order to produce a valid json below
  
 snprintf(topic, sizeof(topic), "event/temp_humidity");
   //json_printf(&out, "{total_ram: %lu, free_ram: %lu, temperature: %f, humidity: %f, device: \"%s\", timestamp: \"%02d:%02d:%02d\"}",

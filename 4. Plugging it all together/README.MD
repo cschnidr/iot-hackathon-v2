@@ -103,9 +103,11 @@ More on Lambda: https://aws.amazon.com/lambda/.
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-1.png" width="60%">
 3. Choose a name, a description and put the following SQL statement in it (it will filter all data delivered over MQTT)
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-2.png" width="60%">
+
 ```
 SELECT * FROM 'event/temp_humidity'
 ```
+
 4. Add "invoke a lambda function" as the action (under set one or more actions)
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-3.png" width="60%">
 5. Click on "create a new lambda function" --> Lambda dashboard will be opened in a new tab

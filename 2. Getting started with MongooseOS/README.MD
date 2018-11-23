@@ -1,9 +1,12 @@
 # Hardware Setup
 Conntect the DHT11 (temperature and huminity) sensor to the Wemos. Make sure you connect the correct pins as depicted below. Otherwise you might destroy the DHT11 sensor!
 
-DHT11
+**DHT11**
+
 VCC = Power supply --> connect to 3V3 (3.3V) on your Wemos (next to pin D8)
+
 DATA = Serial data output --> connect to pin D2 on your Wemos
+
 GND/G = Ground --> connect to GND on your Wemos (next to pin D4)
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/2-hwsetup-1.jpg" width="50%">
