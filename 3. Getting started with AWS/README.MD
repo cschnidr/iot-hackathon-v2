@@ -33,8 +33,12 @@ brew install awscli
 ```
 
 In order to be able to use the AWS-CLI to configure AWS services and resources  IAM user credentials (downloaded above) and a region have to be configured.
+
+Open a CLI/CMD and enter:
 ```
-$ aws configure
+aws configure
+
+--> these Q will be asked during the configuration
 AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
 AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 Default region name [None]: eu-west-1
@@ -45,7 +49,7 @@ Default output format [None]: json
 
 1. Create a new S3 bucket by using CLI
 ```
-aws s3 mb s3://yourbucketname
+aws s3 mb s3://CHANGEYOURBUCKETNAMEHERE
 aws s3 ls
 ````
 
@@ -72,4 +76,3 @@ Click on the index.html to see the public URL to it
 
 # back to HOME
 https://github.com/cschnidr/iot-hackathon-v2
-
