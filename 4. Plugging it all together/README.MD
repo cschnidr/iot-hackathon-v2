@@ -106,7 +106,9 @@ More on Lambda: https://aws.amazon.com/lambda/.
 
 ```
 SELECT * FROM 'event/temp_humidity'
+
 ```
+**IMPORTANT:** Put in an enter after the select statement above. If not you get strange error messages that the IoT rule cannot be created.
 
 4. Add "invoke a lambda function" as the action (under set one or more actions)
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-3.png" width="60%">
