@@ -38,39 +38,37 @@ Open a CLI/CMD and enter:
 ```
 aws configure
 
---> these Q will be asked during the configuration
-AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
-AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+--> these questions will be asked during the configuration
+
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE --> replace it with the access key of the just created IAM user
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY --> replace it with the secret access key of the just created IAM user
 Default region name [None]: eu-west-1
 Default output format [None]: json
 ```
 
-# Create a new S3 Bucket and put up the Webpage
+# Create a new S3 Bucket and put something in it for public access
 
 1. Create a new S3 bucket by using CLI
 ```
 aws s3 mb s3://CHANGEYOURBUCKETNAMEHERE
 aws s3 ls
-````
-
-2. Download the [index.html](https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html) to your machine. By web browser or CLI e.g. curl or wget.
 ```
-curl -O https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html
-````
 
-3. Adjust the index.html to use data from your bucket --> you need to come back here later, when you know how the file with the iot-data (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_XXXXXX) is named.
-
-4. Copy the index.html to your bucket and make it publicly accessible
+2. Download the NetApp [favicon.ico](https://www.netapp.com/favicon.ico) to your machine. By web browser (right click and save) or CLI e.g. curl or wget.
 ```
-aws s3 cp index.html s3://yourbucketname/ --acl public-read
-````
-5. Find the public URL of your index.html and access it with a browser
+curl -O https://www.netapp.com/favicon.ico
+```
+3. Copy the favicon.ico to your bucket and make it publicly accessible
+```
+aws s3 cp favicon.ico s3://yourbucketname/ --acl public-read
+```
+
+4. Find the public URL of your favicon.ico and access it with a browser
 
 Go to the AWS interface (aws.amazon.com) into the S3 section
-Choose the bucket you created to see the index.html in it.
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-1.png" width="70%">
+Choose the bucket you created to see the favicon.ico in it.
 
-Click on the index.html to see the public URL to it
+Click on the favicon.ico to see the public URL to it and access it directly via URL
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/3-s3-2.png" width="70%">
 
 

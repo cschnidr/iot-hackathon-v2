@@ -1,35 +1,19 @@
 # Create a new project in MOS Tool and modify/compile the new app
-Beware the process for the Mac and Windows version of the MOS tool is intermixed below. The steps are the same but on the Mac version lots of it can be done in the GUI vs. CLI commands on the Windows version. However, you can also do CLI on your Mac. For Windows version go with the CLI commands.
 
-1. Create a new app in MOS tool
+1. Download the source code
 
 MOS CLI --> make sure your are in the mos directory and not in another project dir. Use cd .. if necessary.
 ```
 MOS CLI> mos clone https://github.com/cschnidr/esp8266-dht-aws
 ```
---> jump directly to step 5. if you used the CLI
-
-**Step in the GUI:**
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png" width="70%">
 
+The source code will be downloaded from github and stored in the esp8266-dht-aws subfolder.
 
+5. Compile and flash the new program 
 
-2. Choose a name for your app
-
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-2.png" width="70%">
-
-3. Choose [mos.yml](https://github.com/cschnidr/iot-hackathon-v2/blob/master/src/mos.yml) in the dropdown and replace it with the provided one: 
-
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-3.png "Modify mos.yml")
-
-4. Do the same with the [main.c](https://github.com/cschnidr/iot-hackathon-v2/blob/master/src/fs/main.c) (Main program code)
-
-![alt text](https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-4.png "Modify main.c")
-
-5. Compile and flash the new program (hit first wrench icon to build the firmware and then the flash button to flash it to the Wemos - see the picture above)
-
-For CLI: Change into your project directory first
+Change into your project directory first
 ```
 MOS CLI> cd esp8266-dht-aws
 ```
@@ -38,43 +22,29 @@ Build and Flash the app to your Wemos:
 MOS CLI> mos build
 MOS CLI> mos flash
 ```
+
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="90%">
 
 # Connect your Wemos to Wireless
 Change to the MOS tool in order to get your Wemos connected to a wireless network.
-
-**Steps in the Mac GUI**
-
-1. Click on "device setup" if your config windows below is not appearing
-
-2. Connect to the serial port (restart MOS if the flashed app is recognized/appearing)
-
-3. Configure your wireless --> device status should change to online
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-wifi-1.png" width="70%">
-
-**Steps in CLI**
+**Note:** This needs to be done everytime you flash your Wemos with a new app.
 
 ```
 MOS CLI> mos wifi <SSID> <password>
 ```
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-2.PNG" width="90%">
 
+Check the device log window to see if your Wemos is connected to the Wireless network.
 
 # Setup MongooseOS to connect to AWS IoT Core
 
-**Steps in the Mac GUI**
-
-Go to MOS tool and click on "Device Config". On the Window titled "Provision device on AWS IoT" choose the region an policy as depicted below and hit "Provision with AWS IoT".
-The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
-
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="90%">
-
-**Steps in CLI**
+The MOS tool utilizes the already prepared AWS CLI and is automating the whole process to connect the Wemos with the IoT service of AWS (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
 
 ```
 MOS CLI> mos aws-iot-setup --aws-region eu-west-1 --aws-iot-policy mos-default
 ```
-The MOS tool utilizes the already prepared AWS CLI and is automating the whole process (creating IoT shadow on AWS and setup everything with SSL certificated etc.).
+
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="90%">
 
 
 # Testing Wemos connection to AWS IoT
@@ -96,7 +66,9 @@ After a while (Wemos is reporting the temperature every 5min) you should see the
 
 Your Wemos is delivering data to AWS. The IoT service is obviously receiving that data. We now will put a rule in place, that this data will be sent to a Lambda function, which will format the data and store it in a single object/file in S3.
 Lambda is a so-called serverless computing service running in AWS. You can run code to do something (like transforming and storing data) without worring about the required servers, operating systems and middlewares. AWS is managing it completely in the background. While you can run 1M requests in Lambda for free, the usage of it is charged only when running code (in 100ms increments and memory usage).
-More on Lambda: https://aws.amazon.com/lambda/.
+
+Check out this short video about serverless computing. It is another way (after VMs and containers) to consume compute resources.
+[![Introduction to AWS Lambda - Serverless Compute on Amazon Web Services](https://img.youtube.com/vi/eOBq__h4OJ4/0.jpg)](https://youtu.be/eOBq__h4OJ4)
 
 1. Go to your AWS Console
 2. Go to the IoT Core Service, click on "act" and then on "create rule"
@@ -167,17 +139,27 @@ You have to adjust the code in order it writes in your S3 bucket that you create
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-3.png" width="60%">
 
-14. Lastly you need to modify your [index.html](https://github.com/cschnidr/iot-hackathon-v2/blob/master/website/index.html), in order that the included javascript will access the the right data to visualize.
+
+14. Download the [index.html](https://raw.githubusercontent.com/cschnidr/iot-hackathon-v2/master/website/index.html) to your machine. By web browser or CLI e.g. curl or wget.
 ```
-...
-// insert the link to your JSON file in your S3 bucket below
- 
-        $.getJSON("https://s3-eu-west-1.amazonaws.com/wemos-s3/esp8266_EXAMPLE", function(data) {
-...
+curl -O https://raw.githubusercontent.com/cschnidr/iot-hackathon-v2/master/website/index.html
+````
+
+15. Adjust the index.html to use data from your bucket
+    To do so, check the content of your bucket in the AWS GUI and record the URL of the data file generated by your lambda function (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_XXXXXX)
+
+    Edit the index.html to reflect the URL to your data file. A javascript (provided within the index.html) will read and visualize the data file directly in the browser.
+
+The follwing lines need to be updated:
+```
+cat index.html | grep YOUR
+    <link rel="shortcut icon" type="image/x-icon" href="https://s3-YOURREGION.amazonaws.com/YOURBUCKETNAME/favicon.ico"/> 
+        var yourjsonpath = "https://s3-YOURREGION.amazonaws.com/YOURBUCKETNAME/esp8266_YOURUNIQUEID";
 ```
 
-15. Upload your index.html into your bucket and access it by a webbrowser
+16. Copy the index.html to your bucket and make it publicly accessible
 ```
-$ aws s3 cp index.html s3://wemos-s3/ --acl public-read
-```
+aws s3 cp index.html s3://yourbucketname/ --acl public-read
+````
+17. Find the public URL of your index.html and access it with a browser
 
