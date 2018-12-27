@@ -11,7 +11,7 @@ MOS CLI> mos clone https://github.com/cschnidr/esp8266-dht-aws
 
 The source code will be downloaded from github and stored in the esp8266-dht-aws subfolder.
 
-5. Compile and flash the new program 
+2. Compile and flash the new program 
 
 Change into your project directory first
 ```
