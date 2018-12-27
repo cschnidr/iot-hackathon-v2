@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="refresh" content="120">
     <title>NT@P H@ck@th0n - Temperature and Humidity</title>
-    <link rel="shortcut icon" type="image/x-icon" href="https://s3.YOURREGION.amazonaws.com/YOURBUCKETNAME/favicon.ico"/> 
+    <link rel="shortcut icon" type="image/x-icon" href="https://s3-YOURREGION.amazonaws.com/YOURBUCKETNAME/favicon.ico"/> 
 	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -78,7 +78,7 @@
             }
         });
         // insert the link to your JSON file in your S3 bucket below
-        var yourjsonpath = "https://s3.YOURREGION.amazonaws.com/YOURBUCKETNAME/esp8266_YOURUNIQUEID";
+        var yourjsonpath = "https://s3-YOURREGION.amazonaws.com/YOURBUCKETNAME/esp8266_YOURUNIQUEID";
         
         $.getJSON(yourjsonpath, function(data) {
             chart.data.datasets[0].data = data.temperature_readings;
