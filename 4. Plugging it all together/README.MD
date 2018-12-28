@@ -167,7 +167,7 @@ aws s3 cp index.html s3://yourbucketname/ --acl public-read
 17. Find the public URL of your index.html and access it with a browser  
 Usually something like: https://s3-eu-west-1.amazonaws.com/YOURBUCKETNAME/index.html
 
-Enjoy your product :-) You might wanna adjust the lambda function to keep the date for a week or the c-code of the app to deliver the data in another frequency. Think of configuring the WIFI and AWS IoT again after your flashed the app to your wemos.
+Congratulation - Enjoy your product :-) You might wanna adjust the lambda function to keep the date for a week or the c-code of the app to deliver the data in another frequency. Think of configuring the WIFI and AWS IoT again after your flashed the app to your wemos.  
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-final.png" width="80%">
 
 
