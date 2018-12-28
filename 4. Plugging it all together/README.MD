@@ -2,12 +2,12 @@
 
 1. Download the source code
 
-MOS CLI --> make sure your are in the mos directory and not in another project dir. Use cd .. if necessary.
+Make sure your are in the mos directory and not in another project dir. Use cd .. if necessary.
 ```
 MOS CLI> mos clone https://github.com/cschnidr/esp8266-dht-aws
 ```
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png" width="70%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-dhtapp-1.png" width="90%">
 
 The source code will be downloaded from github and stored in the esp8266-dht-aws subfolder.
 
@@ -25,8 +25,8 @@ MOS CLI> mos flash
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-mos-windows-1.PNG" width="90%">
 
-# Connect your Wemos to Wireless
-Change to the MOS tool in order to get your Wemos connected to a wireless network.
+# Connect your Wemos to a Wireless Network
+Change to the MOS tool in order to get your Wemos connected to a wireless network.  
 **Note:** This needs to be done everytime you flash your Wemos with a new app.
 
 ```
@@ -44,7 +44,7 @@ The MOS tool utilizes the already prepared AWS CLI and is automating the whole p
 MOS CLI> mos aws-iot-setup --aws-region eu-west-1 --aws-iot-policy mos-default
 ```
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="90%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-awsiotsetup-1.png" width="100%">
 
 
 # Testing Wemos connection to AWS IoT
@@ -64,10 +64,10 @@ After a while (Wemos is reporting the temperature every 5min) you should see the
 
 # Create the Lambda Function in AWS
 
-Your Wemos is delivering data to AWS. The IoT service is obviously receiving that data. We now will put a rule in place, that this data will be sent to a Lambda function, which will format the data and store it in a single object/file in S3.
+Your Wemos is delivering data to AWS. The IoT service is obviously receiving that data. We now will put a rule in place to send this data to a Lambda function, which will format the data and store it in a single object/file in S3.  
 Lambda is a so-called serverless computing service running in AWS. You can run code to do something (like transforming and storing data) without worring about the required servers, operating systems and middlewares. AWS is managing it completely in the background. While you can run 1M requests in Lambda for free, the usage of it is charged only when running code (in 100ms increments and memory usage).
 
-Check out this short video about serverless computing. It is another way (after VMs and containers) to consume compute resources.
+Check out this short video about serverless computing. It is another way (after VMs and containers) to consume compute resources.  
 [![Introduction to AWS Lambda - Serverless Compute on Amazon Web Services](https://img.youtube.com/vi/eOBq__h4OJ4/0.jpg)](https://youtu.be/eOBq__h4OJ4)
 
 1. Go to your AWS Console
@@ -92,7 +92,7 @@ SELECT * FROM 'event/temp_humidity'
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-3.png" width="60%">
 
-7. Choose a name for the new role, edit the policy document with the json below:
+7. Choose a name for the new role, edit the policy document with the json (that describes which permissions will be assigned to the lambda function) below:
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-role-1.png" width="60%">
 
 ```
@@ -119,17 +119,17 @@ SELECT * FROM 'event/temp_humidity'
 
 8. Click allow to create the new role and go back to the lambda dialog. Hit "create new function".
 
-9. Paste the [Python code](https://github.com/cschnidr/iot-hackathon-v2/blob/master/aws%20/store_temp_in_s3.py) in the relevant window and choose File-Save in the code editor to complete your lambda function.
+9. Paste the [Python code](https://raw.githubusercontent.com/cschnidr/iot-hackathon-v2/master/aws%20/store_temp_in_s3.py) in the relevant window and choose File-Save in the code editor to complete your lambda function.
 You have to adjust the code in order it writes in your S3 bucket that you created earlier.
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-2.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-2.png" width="75>%">
 
 10. Go back to the IoT Core dialog and choose your just created lambda function
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-5.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-5.png" width="75%">
 
 11. After some minutes (next time your Wemos is transmitting data to AWS), the lambda function gets triggered the first time and should create a new file in the relevant S3 bucket. Go to the S3 dashboard to check for the file:
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-1.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-1.png" width="75>%">
 
 12. Click on that file to see the URL (copy that URL for later use) to access it.
 
@@ -145,8 +145,8 @@ You have to adjust the code in order it writes in your S3 bucket that you create
 curl -O https://raw.githubusercontent.com/cschnidr/iot-hackathon-v2/master/website/index.html
 ````
 
-15. Adjust the index.html to use data from your bucket
-    To do so, check the content of your bucket in the AWS GUI and record the URL of the data file generated by your lambda function (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_XXXXXX)
+15. Adjust the index.html to use data from your bucket  
+    To do so, check the content of your bucket in the AWS GUI and record the URL of the data file generated by your lambda function (e.g. https://s3-eu-west-1.amazonaws.com/yourbucketname/esp8266_YOURUNIQUEID)
 
     Edit the index.html to reflect the URL to your data file. A javascript (provided within the index.html) will read and visualize the data file directly in the browser.
 
@@ -161,5 +161,8 @@ cat index.html | grep YOUR
 ```
 aws s3 cp index.html s3://yourbucketname/ --acl public-read
 ````
-17. Find the public URL of your index.html and access it with a browser
 
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/index-edit-s3.gif" width="80%">
+
+17. Find the public URL of your index.html and access it with a browser  
+Usually something like: https://s3-eu-west-1.amazonaws.com/YOURBUCKETNAME/index.html
