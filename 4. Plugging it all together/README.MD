@@ -1,4 +1,4 @@
-# Create a new project in MOS Tool and modify/compile the new app
+# Download, compile and flash a new app in MOS Tool
 
 1. Download the source code
 
@@ -83,17 +83,17 @@ SELECT * FROM 'event/temp_humidity'
 **IMPORTANT:** Put in an enter after the select statement above. If not you get strange error messages that the IoT rule cannot be created.
 
 4. Add "invoke a lambda function" as the action (under set one or more actions)
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-3.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-3.png" width="70%">
 5. Click on "create a new lambda function" --> Lambda dashboard will be opened in a new tab
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-4.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-iotrule-4.png" width="70%">
 
 6. Choose a name for your lambda function and choose "Python 3.6" as the runtime. Then choose create a custom role (to set permissions what your new lambda function can do) --> a new IAM tab opens.
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-1.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-1.png" width="70%">
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-3.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-3.png" width="70%">
 
 7. Choose a name for the new role, edit the policy document with the json (that describes which permissions will be assigned to the lambda function) below:
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-role-1.png" width="60%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-role-1.png" width="70%">
 
 ```
 {
@@ -122,14 +122,14 @@ SELECT * FROM 'event/temp_humidity'
 9. Paste the [Python code](https://raw.githubusercontent.com/cschnidr/iot-hackathon-v2/master/aws%20/store_temp_in_s3.py) in the relevant window and choose File-Save in the code editor to complete your lambda function.
 You have to adjust the code in order it writes in your S3 bucket that you created earlier.
 
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-2.png" width="75>%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-2.png" width="75%">
 
 10. Go back to the IoT Core dialog and choose your just created lambda function
 
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-lambda-5.png" width="75%">
 
 11. After some minutes (next time your Wemos is transmitting data to AWS), the lambda function gets triggered the first time and should create a new file in the relevant S3 bucket. Go to the S3 dashboard to check for the file:
-<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-1.png" width="75>%">
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-s3-1.png" width="75%">
 
 12. Click on that file to see the URL (copy that URL for later use) to access it.
 
@@ -166,3 +166,8 @@ aws s3 cp index.html s3://yourbucketname/ --acl public-read
 
 17. Find the public URL of your index.html and access it with a browser  
 Usually something like: https://s3-eu-west-1.amazonaws.com/YOURBUCKETNAME/index.html
+
+Enjoy your product :-) You might wanna adjust the lambda function to keep the date for a week or the c-code of the app to deliver the data in another frequency. Think of configuring the WIFI and AWS IoT again after your flashed the app to your wemos.
+<img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-final.png" width="80%">
+
+
