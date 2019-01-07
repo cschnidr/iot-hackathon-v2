@@ -46,6 +46,10 @@ Default region name [None]: eu-west-1
 Default output format [None]: json
 ```
 
+Check out the available [AWS Regions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) if you've choose to run the setup not in Ireland (eu-west-1).
+
+
+
 # Create a new S3 Bucket and put something in it for public access
 
 1. Create a new S3 bucket by using CLI
