@@ -53,6 +53,7 @@ In order to test if your device is sending data to AWS you can check the logs in
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-checkinglog-1.png" width="90%">
 
 To see if AWS is getting your data, you connect to aws.amazon.com and go to the "iot core" section:
+--> make sure you are in the region you used for the setup!!!
 <img src="https://github.com/cschnidr/iot-hackathon-v2/blob/master/images/4-testiot-1.png" width="90%">
 
 Next you need to subscribe (click on test) to the MQTT channel (we use # in this example, which gives you all data your broker is receiving):
